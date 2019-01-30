@@ -1,4 +1,4 @@
 Remove all stoped containers:
-docker rm -v `docker ps -aq -f status=exited`
+docker rm -v $(docker ps -aq -f status=exited)
 Remove all unused images
 docker rmi $(docker images -q) --force
