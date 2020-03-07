@@ -1,17 +1,10 @@
-cd /etc/yum.repos.d
-vim doker.repo
->>
-[dockerrepo]
-name=Docker Repository
-baseurl=https://yum.dockerproject.org/repo/centos/7/
-enable=1
-gpgcheck=1
-gpgkey=https://yum.dockerproject.org/gpg
-<<
-yum update
-yum install -y docker-engine
-systemctl enable docker
-systemctl start docker
-docker --versions
-usermod -a -G docker {current_user} #need to connect user to docker socket
-cat /etc/group | grep docker
+sudo yum install -y device-mapper-persistent-data lvm2
+sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+
+sudo yum install -y docker-ce-18.09.5 docker-ce-cli-18.09.5 containerd.io
+sudo systemctl start docker
+sudo systemctl enable docker
+sudo usermod -a -G docker cloud_user
+docker run hello-world
