@@ -23,3 +23,7 @@ sudo apt-get install -y docker-ce=5:18.09.5~3-0~ubuntu-bionic docker-ce-cli=5:18
 sudo usermod -a -G docker cloud_user
 
 docker run hello-world
+
+#############OR#####
+sudo apt install -y docker.io
+sudo usermod -aG docker cloud_user
